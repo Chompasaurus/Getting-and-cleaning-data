@@ -1,10 +1,12 @@
 
 
 This code is designed with the assumption that you have downloaded and unzipped the dataset
-and related files into your working directory.  The original README.txt for the dataset has been pasted below the notes about the new code written for the assignment.  
+and related files into your working directory.  The original README.txt for the dataset has been pasted below the notes about the 
+new code written for the assignment.  
 
 The R script run_analysis.R is designed to:
-    1.  read in and bind movement, activity, and subject data from the test and training sets together with appropriate label             files
+    1.  read in and bind movement, activity, and subject data from the test and training sets together with appropriate label
+    files
     2.  extend the variable names to be more descriptive         
     3.  isolate the mean and standard deviation measurements 
     4.  create a new dataset of mean movement measurements according to which subject was testing and which action they performed
@@ -12,9 +14,15 @@ The R script run_analysis.R is designed to:
 
 The script's major sections are:
 
-    1. the function data_beast() reads in metadata and creates two subfunctions, each of which reads the test and train sections          of the x and y tests, respectively, then returns the merged sets to the upper function.  The variable name data goes               through a series of character replacements to extend abbreviations to full word descriptions.  The factor levels for               activity are assigned     activity names to replace the numbers 1:6.  Movement data is reduced to the subset of columns            holding mean and standard deviation     data.  Finally the subset of movement data is column-bound with the test subject           and activity descriptions, and the upper function     returns the data required.
+1. the function data_beast() reads in metadata and creates two subfunctions, each of which reads the test and train sections
+of the x and y tests, respectively, then returns the merged sets to the upper function.  The variable name data goes through
+series of character replacements to extend abbreviations to full word descriptions.  The factor levels for activity are assigned 
+activity names to replace the numbers 1:6.  Movement data is reduced to the subset of columns holding mean and standard
+deviation data.  Finally the subset of movement data is column-bound with the test subject and activity descriptions, and the 
+upper function returns the data required.
 
-    2.  the ddply function of the plyr package is used to create a seperate dataset of the means for each variable grouped by             which subject was testing and what action they performed.
+    2.  the ddply function of the plyr package is used to create a seperate dataset of the means for each variable grouped by     
+    which subject was testing and what action they performed.
 
     3.  A .txt file containing the table of means is written into the working directory.
 
